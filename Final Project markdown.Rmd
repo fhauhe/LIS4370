@@ -1,0 +1,41 @@
+---
+title: "Final Project Markdown"
+author: "Faith Hauhe"
+date: "2024-04-01"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Libraries
+
+Load necessary libraries
+
+```{r cars}
+summary(cars)
+```
+
+## Load in Data Set
+
+Load selected dataset 
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+## Eliminate Unwanted Symbols
+
+Eliminate symbols. Make sure to include ".","$","#"
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+## Make all characters lowercase
+
+Run the tolowercase on the data
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
