@@ -9,33 +9,44 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Libraries
+## Function to remove unnecessary symbols from text data
 
-Load necessary libraries
-
-```{r cars}
-summary(cars)
-```
-
-## Load in Data Set
-
-Load selected dataset 
+Define symbols in the data. Replace symbols with a space then remove extra space. Make sure to replace multiple spaces with a single space.
 
 ```{r pressure, echo=FALSE}
-plot(pressure)
+remove_symbols <- function(text) {
+  
+  symbols <- c("\\.", "\\$", "#", "[[:punct:]]")  # Regular expressions for symbols and punctuation
+  
+  # Replace symbols with a space
+  clean_text <- gsub(symbols, " ", text)
+  
+  # Replace multiple spaces with single space
+  clean_text <- gsub(" +", " ", clean_text) 
+  
+  return(clean_text)
+}
+
+ 
 ```
 
-## Eliminate Unwanted Symbols
+## Condense data from file
 
-Eliminate symbols. Make sure to include ".","$","#"
+Read text data from file and apply removed_symbols to each line. Create a single character vector from condensed lines.
 
 ```{r pressure, echo=FALSE}
-plot(pressure)
+condense_text <- function(filepath) {
+  # Read text data from the file
+  text_data <- readLines(filepath)
+  
+  # Apply remove_symbols function to each line
+  condensed_data <- lapply(text_data, remove_symbols)
+  
+  # Combine condensed lines into a single character vector
+  condensed_data <- unlist(condensed_data)
+  
+  return(condensed_data)
+}
+  
 ```
 
-## Make all characters lowercase
-
-Run the tolowercase on the data
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
